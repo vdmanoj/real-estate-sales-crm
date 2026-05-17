@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.admin-container {
+
+  display: flex;
+
+  height: 100vh;
+
+  background: #0f172a;
+
+  color: white;
+}
+
+.admin-sidebar {
+
+  width: 250px;
+
+  background: #1e293b;
+
+  padding: 20px;
+}
+
+.admin-sidebar h2 {
+
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.menu {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 15px;
+
+  margin-bottom: 10px;
+
+  cursor: pointer;
+
+  border-radius: 8px;
+
+  background: #334155;
+}
+
+.menu:hover {
+
+  background: #475569;
+}
+
+.logout {
+
+  background: red;
+}
+
+.admin-main {
+
+  flex: 1;
+
+  padding: 20px;
+
+  overflow-y: auto;
+}
+
+.card {
+
+  background: #1e293b;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  margin-bottom: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.profile {
+
+  width: 60px;
+
+  height: 60px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.welcome-box {
+
+  text-align: center;
+
+  margin-top: 100px;
+}
