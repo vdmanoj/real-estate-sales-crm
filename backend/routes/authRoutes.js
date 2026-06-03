@@ -18,7 +18,6 @@ router.post("/register", async (req, res) => {
       profilePic
     } = req.body;
 
-    // CHECK EXISTING
     const existingUser =
       await User.findOne({ email });
 
@@ -30,7 +29,6 @@ router.post("/register", async (req, res) => {
       });
     }
 
-    // CREATE USER
     const user = new User({
 
       name,
@@ -45,6 +43,7 @@ router.post("/register", async (req, res) => {
     await user.save();
 
     res.json({
+
       success: true,
       message: "Registered Successfully"
     });
@@ -54,6 +53,7 @@ router.post("/register", async (req, res) => {
     console.log(err);
 
     res.status(500).json({
+
       success: false,
       message: "Register Failed"
     });
@@ -77,6 +77,7 @@ router.post("/login", async (req, res) => {
     if (!user) {
 
       return res.status(400).json({
+
         success: false,
         message: "User not found"
       });
@@ -85,12 +86,14 @@ router.post("/login", async (req, res) => {
     if (user.password !== password) {
 
       return res.status(400).json({
+
         success: false,
         message: "Wrong Password"
       });
     }
 
     res.json({
+
       success: true,
       user
     });
@@ -100,6 +103,7 @@ router.post("/login", async (req, res) => {
     console.log(err);
 
     res.status(500).json({
+
       success: false,
       message: "Login Failed"
     });
@@ -124,5 +128,55 @@ router.get("/all", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+// UPDATE PROFILE
+router.put(
+  "/update/:id",
+  async (req, res) => {
+
+    try {
+
+      const updatedUser =
+        await User.findByIdAndUpdate(
+
+          req.params.id,
+
+          {
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            gender: req.body.gender,
+            profilePic: req.body.profilePic
+          },
+
+          { new: true }
+
+        );
+
+      res.json({
+
+        success: true,
+
+        message:
+          "Profile Updated Successfully",
+
+        user: updatedUser
+      });
+
+    } catch (err) {
+
+      console.log(err);
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          "Profile Update Failed"
+      });
+    }
+  }
+);
 
 module.exports = router;

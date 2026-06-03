@@ -8,79 +8,42 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-  const [name, setName] =
-    useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("admin");
+  const [gender, setGender] = useState("Male");
+  const [phone, setPhone] = useState("");
 
-  const [email, setEmail] =
-    useState("");
+ 
 
-  const [password, setPassword] =
-    useState("");
-
-  const [role, setRole] =
-    useState("Admin");
-
-  const [gender, setGender] =
-    useState("Male");
-
-  const [phone, setPhone] =
-    useState("");
-
-  const [profilePic, setProfilePic] =
-    useState("");
-
-
-  // CONVERT IMAGE TO BASE64
-  const handleImage = (e) => {
-
-    const file = e.target.files[0];
-
-    const reader = new FileReader();
-
-    reader.readAsDataURL(file);
-
-    reader.onloadend = () => {
-
-      setProfilePic(reader.result);
-    };
-  };
+  // IMAGE HANDLER (FIXED)
 
 
   // REGISTER
-  const register = async () => {
+ const register = async () => {
+  try {
 
-    try {
+    const res = await axios.post(
+      "http://localhost:5000/api/users/register",
+      {
+        name,
+        email,
+        password,
+        role,
+        gender,
+        phone
+      }
+    );
 
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        {
-          name,
-          email,
-          password,
-          role,
-          gender,
-          phone,
-          profilePic
-        }
-      );
+    alert(res.data.message);
+    navigate("/");
 
-      alert(
-        res.data.message
-      );
-
-      navigate("/");
-
-    } catch (err) {
-
-      console.log(err);
-
-      alert(
-        err.response?.data?.message ||
-        "Register Failed"
-      );
-    }
-  };
-
+  } catch (err) {
+    console.log(err);
+    alert(err.response?.data?.message || "Register Failed");
+  }
+};
 
   return (
 
@@ -94,96 +57,55 @@ export default function Register() {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={(e) =>
-            setName(e.target.value)
-          }
+          onChange={(e) => setName(e.target.value)}
         />
 
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <input
           type="text"
           placeholder="Phone Number"
           value={phone}
-          onChange={(e) =>
-            setPhone(e.target.value)
-          }
+          onChange={(e) => setPhone(e.target.value)}
         />
 
         {/* GENDER */}
         <select
           value={gender}
-          onChange={(e) =>
-            setGender(e.target.value)
-          }
+          onChange={(e) => setGender(e.target.value)}
         >
-          <option value="Male">
-            Male
-          </option>
-
-          <option value="Female">
-            Female
-          </option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
 
         {/* ROLE */}
         <select
           value={role}
-          onChange={(e) =>
-            setRole(e.target.value)
-          }
+          onChange={(e) => setRole(e.target.value)}
         >
-          <option value="admin">
-            Admin
-          </option>
-
-          <option value="executive">
-            Executive
-          </option>
+          <option value="admin">Admin</option>
+         
         </select>
 
-        {/* PROFILE PIC */}
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImage}
-        />
 
-        {profilePic && (
-
-          <img
-            src={profilePic}
-            alt=""
-            className="preview-img"
-          />
-        )}
-
-        <button
-          onClick={register}
-        >
+        <button onClick={register}>
           Register
         </button>
 
         <p
-          onClick={() =>
-            navigate("/")
-          }
+          onClick={() => navigate("/")}
           className="login-link"
         >
           Back to Login

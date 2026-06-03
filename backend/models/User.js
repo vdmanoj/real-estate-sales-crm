@@ -11,17 +11,19 @@ const UserSchema = new mongoose.Schema({
 
   password: String,
 
-  role: String,
+  role: String,   // (kept as-is, no change requested)
 
   gender: String,
 
   phone: String,
 
-  profilePic: String
+ 
+
+  attendance: {
+    type: String,
+    default: "Absent"
+  }
+
 });
 
-module.exports =
-  mongoose.model(
-    "User",
-    UserSchema
-  );
+module.exports = mongoose.model("User", UserSchema);

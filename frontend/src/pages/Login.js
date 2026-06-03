@@ -1,34 +1,36 @@
+// frontend/src/pages/Login.js
+
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./Login.css";
 
 export default function Login() {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
+  const [email, setEmail] =
+    useState("");
+
+  const [password, setPassword] =
+    useState("");
+
+
+  // LOGIN FUNCTION
   const login = async () => {
 
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://localhost:5000/api/users/login",
         {
           email,
           password
         }
       );
 
-      console.log("LOGIN RESPONSE:", res.data);
-
-      // CHECK SUCCESS
-      if (!res.data.success) {
-        alert(res.data.message);
-        return;
-      }
+      console.log(res.data);
 
       const user = res.data.user;
 
@@ -38,30 +40,39 @@ export default function Login() {
         JSON.stringify(user)
       );
 
-      // ROLE BASED LOGIN
+      // ROLE BASED NAVIGATION
       if (user.role === "admin") {
+
         navigate("/admin");
       }
 
-      else if (user.role === "executive") {
-        navigate("/exec");
+      else if (
+        user.role === "executive"
+      ) {
+
+        navigate("/executive");
       }
 
-      else if (user.role === "inside") {
+      else if (
+        user.role === "inside"
+      ) {
+
         navigate("/inside");
       }
 
-      else if (user.role === "outside") {
+      else if (
+        user.role === "outside"
+      ) {
+
         navigate("/outside");
       }
 
       else {
+
         alert("Role not found");
       }
 
-    }
-
-    catch (err) {
+    } catch (err) {
 
       console.log(err);
 
@@ -72,50 +83,48 @@ export default function Login() {
     }
   };
 
+
   return (
 
     <div className="login-container">
 
-      <div className="overlay">
+      <div className="login-box">
 
-        <div className="login-box">
+        <h1>
+          REAL ESTATE CRM
+        </h1>
 
-          <h2>REAL ESTATE</h2>
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+        />
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
-          />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+        />
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
-          />
+        <button onClick={login}>
+          Login
+        </button>
 
-          <button onClick={login}>
-            Login
-          </button>
-
-          <p
-            onClick={() => navigate("/register")}
-            style={{
-              color: "#38bdf8",
-              cursor: "pointer",
-              marginTop: "15px"
-            }}
-          >
-            Don't have an account? Register
-          </p>
-
-        </div>
+        <p
+          className="register-text"
+          onClick={() =>
+            navigate("/register")
+          }
+        >
+          Don't have account?
+          Register
+        </p>
 
       </div>
 

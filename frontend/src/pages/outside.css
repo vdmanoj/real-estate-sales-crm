@@ -1,195 +1,286 @@
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0f172a;
-  color: white;
-}
-
+/* MAIN LAYOUT */
 .outside-container {
-
-  height: 100vh;
-
   display: flex;
-
   flex-direction: column;
+  height: 100vh;
+  background: #081028;
+  color: white;
+  font-family: Arial, sans-serif;
 }
-
 
 /* TOPBAR */
 .topbar {
-
   height: 60px;
-
-  background: #2563eb;
-
+  background: #0b1739;
   display: flex;
-
-  justify-content: center;
-
   align-items: center;
-
-  font-size: 22px;
-
+  padding: 0 20px;
+  font-size: 18px;
   font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
-
 
 /* MAIN CONTENT */
 .outside-main {
-
   flex: 1;
-
-  overflow-y: auto;
-
   padding: 20px;
-
-  padding-bottom: 90px;
+  overflow-y: auto;
 }
 
-
-/* HOME */
-.home-page {
-
-  text-align: center;
-
-  margin-top: 100px;
-}
-
-
-/* CUSTOMER CARD */
-.customer-card {
-
-  background: #1e293b;
-
-  padding: 15px;
-
-  border-radius: 12px;
-
-  margin-bottom: 15px;
-
+/* HOME CARDS */
+.outside-home {
   display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-}
-
-
-/* BUTTON */
-.visit-btn {
-
-  background: green;
-
-  border: none;
-
-  padding: 10px 15px;
-
-  border-radius: 8px;
-
-  color: white;
-
-  cursor: pointer;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-}
-
-
-/* PROFILE */
-.profile-page {
-
-  text-align: center;
-
-  margin-top: 40px;
-}
-
-.profile-img {
-
-  width: 120px;
-
-  height: 120px;
-
-  border-radius: 50%;
-
-  object-fit: cover;
-
-  margin-bottom: 20px;
-}
-
-.logout-btn {
-
-  margin-top: 20px;
-
-  padding: 12px 25px;
-
-  border: none;
-
-  border-radius: 8px;
-
-  background: red;
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 16px;
-}
-
-
-/* BOTTOM NAVBAR */
-.bottom-nav {
-
-  height: 75px;
-
-  background: #1e40af;
-
-  display: flex;
-
-  justify-content: space-around;
-
-  align-items: center;
-
-  position: fixed;
-
-  bottom: 0;
-
-  width: 100%;
-}
-
-
-/* NAV ITEMS */
-.bottom-nav div {
-
-  display: flex;
-
   flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  flex: 1;
-
-  height: 100%;
-
-  cursor: pointer;
-
-  color: white;
-
-  font-size: 14px;
+  gap: 20px;
 }
 
-.bottom-nav div svg {
+/* WELCOME */
+.outside-welcome {
+  background: #111c44;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  font-size: 22px;
+.outside-welcome h1 {
+  margin: 0;
+  font-size: 24px;
+}
 
+.status-badge {
+  background: #22c55e;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* STATS */
+.outside-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+/* QUICK INFO */
+.outside-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.info-card {
+  background: #111c44;
+  padding: 18px;
+  border-radius: 15px;
+}
+
+.info-card h3 {
+  color: #ffb703;
+  margin-bottom: 8px;
+}
+
+/* STATS */
+.outside-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.stat-card {
+  background: #111c44;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h2 {
+  font-size: 28px;
+  color: #ffb703;
+}
+
+/* ASSIGNED PAGE */
+.assigned-page h2 {
+  margin-bottom: 15px;
+  color: #ffb703;
+}
+
+.visit-card {
+  background: #111c44;
+  padding: 18px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.visit-card .left h3 {
+  font-size: 20px;
   margin-bottom: 5px;
 }
 
-.bottom-nav div:hover {
+.visit-card .left p {
+  color: #cbd5e1;
+  margin: 3px 0;
+}
 
-  background: rgba(255,255,255,0.1);
+/* BUTTONS */
+.visit-card .right button {
+  display: block;
+  margin: 6px 0;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.visit-card .right button:hover {
+  transform: scale(1.05);
+}
+
+/* BUTTON COLORS */
+.visit-card .right button:first-child {
+  background: #3b82f6;
+  color: white;
+}
+
+.visit-card .right button:last-child {
+  background: #22c55e;
+  color: white;
+}
+
+.visit-card .right button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* PROFILE */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.profile-card {
+  background: #111c44;
+  padding: 30px;
+  border-radius: 20px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE */
+.profile-img-box img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid #ffb703;
+  margin-bottom: 10px;
+}
+
+/* NAME */
+.profile-name {
+  font-size: 24px;
+  margin: 10px 0 5px;
+}
+
+/* ROLE */
+.profile-role {
+  color: #ffb703;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.profile-grid {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.profile-item {
+  background: #1b2a52;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.profile-item span {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.profile-item p {
+  margin: 4px 0 0;
+  color: white;
+  font-weight: bold;
+}
+
+/* BUTTON */
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ef4444;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+/* BOTTOM NAV */
+.bottom-nav {
+  height: 60px;
+  background: #0b1739;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+}
+
+.bottom-nav div {
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.bottom-nav div:hover {
+  color: #ffb703;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .visit-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .outside-welcome {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }

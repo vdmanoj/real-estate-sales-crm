@@ -33,7 +33,7 @@ function App() {
         />
 
         <Route
-          path="/exec"
+          path="/executive"
           element={<ExecutiveDashboard />}
         />
 

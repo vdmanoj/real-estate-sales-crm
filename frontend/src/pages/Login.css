@@ -1,67 +1,116 @@
-/* Full background */
+/* FULL PAGE */
 .login-container {
   height: 100vh;
   width: 100%;
   background: url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2")
     no-repeat center center/cover;
-}
 
-/* Dark overlay */
-.overlay {
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Login box */
-.login-box {
-  width: 400px;
-  padding: 30px;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
-  text-align: center;
+/* DARK OVERLAY */
+.overlay {
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Title */
+/* LOGIN BOX */
+.login-box {
+  width: 420px;
+
+  padding: 40px;
+
+  border-radius: 20px;
+
+  backdrop-filter: blur(15px);
+
+  background: silver;
+
+  text-align: center;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* TITLE */
 .login-box h2 {
   color: white;
-  margin-bottom: 20px;
+  font-size: 48px;
+  margin-bottom: 40px;
+  font-weight: bold;
 }
 
-/* Inputs */
+/* INPUTS */
 .login-box input {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+
+  padding: 15px;
+
+  margin: 12px 0;
+
   border: none;
   outline: none;
-  border-radius: 5px;
+
+  border-radius: 12px;
+
   background: rgba(255, 255, 255, 0.2);
+
   color: white;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
 }
 
-/* Placeholder color */
+/* PLACEHOLDER */
 .login-box input::placeholder {
-  color: #ddd;
+  color: #eee;
 }
 
-/* Button */
+/* BUTTON */
 .login-box button {
   width: 100%;
-  padding: 12px;
-  margin-top: 15px;
+
+  padding: 15px;
+
+  margin-top: 20px;
+
   border: none;
-  border-radius: 5px;
-  background: #3da9fc;
+
+  border-radius: 12px;
+
+  background: #3b82f6;
+
   color: white;
-  font-size: 16px;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
   cursor: pointer;
+
+  transition: 0.3s;
 }
 
 .login-box button:hover {
-  background: #2b8ae0;
+  background: #2563eb;
+}
+
+/* REGISTER TEXT */
+.login-box p {
+  margin-top: 35px;
+  color: white;
+  font-size: 18px;
+}
+
+.login-box span {
+  font-weight: bold;
+  cursor: pointer;
 }
