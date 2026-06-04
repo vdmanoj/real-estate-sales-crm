@@ -15,11 +15,12 @@ export default function OutsideDashboard() {
 
   const [page, setPage] = useState("home");
   const [customers, setCustomers] = useState([]);
-
   const [recording, setRecording] = useState(false);
+
+  
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioBlob, setAudioBlob] = useState(null);
-  const [selfie, setSelfie] = useState(null);
+
 
   // LOAD CUSTOMERS
   const loadCustomers = async () => {
@@ -42,9 +43,10 @@ export default function OutsideDashboard() {
     }
   };
 
-  useEffect(() => {
-    loadCustomers();
-  }, [page]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
+  loadCustomers();
+}, []);
 
  
  
@@ -54,20 +56,7 @@ export default function OutsideDashboard() {
   }, []);
 
   // MARK VISITED (FIXED)
-  const markVisited = async (id) => {
-    try {
-      await axios.put(`https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/${id}`, {
-        visited: true,
-        status: "visited"
-      });
-
-      loadCustomers();
-      alert("Visit Updated");
-
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  
 
   return (
 

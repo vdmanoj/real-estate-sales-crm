@@ -101,7 +101,7 @@ useEffect(() => {
     loadCustomers("notInterested");
   }
 
-}, [page, loadCustomers]);
+}, [page]);
   // =========================
   // UPDATE STATUS
   // =========================
