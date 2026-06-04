@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 import {
   FaHome,
@@ -53,21 +53,21 @@ export default function InsideDashboard() {
  // =========================
 // LOAD CUSTOMERS (FIXED)
 // =========================
-const loadCustomers = async (type = "all") => {
+const loadCustomers = useCallback(async (type = "all") => {
   try {
 
     let url = "";
 
     if (type === "all") {
-      url = "http://localhost:5000/api/customers/all";
+      url = "https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/all";
     }
 
     else if (type === "interested") {
-      url = "http://localhost:5000/api/customers/inside/" + user.name + "/interested";
+      url = "https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/inside/" + user.name + "/interested";
     }
 
     else if (type === "notInterested") {
-      url = "http://localhost:5000/api/customers/inside/" + user.name + "/not-interested";
+      url = "https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/inside/" + user.name + "/not-interested";
     }
 
     const res = await axios.get(url);
@@ -78,11 +78,13 @@ const loadCustomers = async (type = "all") => {
     console.log(err);
     setCustomers([]);
   }
-};
+}, [user.name]);;
 
   // =========================
   // FIRST LOAD
+// eslint-disable-next-line react-hooks/exhaustive-deps
 useEffect(() => {
+
   if (page === "home") {
     loadCustomers("all");
   }
@@ -99,7 +101,7 @@ useEffect(() => {
     loadCustomers("notInterested");
   }
 
-}, [page]);
+}, [page, loadCustomers]);
   // =========================
   // UPDATE STATUS
   // =========================
@@ -111,7 +113,7 @@ useEffect(() => {
 
     try {
 const res = await axios.put(
-  `http://localhost:5000/api/customers/${id}`,
+  `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/${id}`,
   { status }
 );
 
@@ -516,7 +518,7 @@ if (!res.data.success) {
                           const res =
                             await axios.get(
 
-                              "http://localhost:5000/api/users/outside"
+                              "https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/outside"
                             );
 
                           const users =
@@ -558,7 +560,7 @@ if (!res.data.success) {
                           const assignRes =
                             await axios.put(
 
-                              `http://localhost:5000/api/customers/assign/${c._id}`,
+                              `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/assign/${c._id}`,
 
                               {
                                 outsideAssignedTo:
