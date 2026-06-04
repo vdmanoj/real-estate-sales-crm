@@ -73,7 +73,7 @@ export default function AdminDashboard() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/users/all"
+        "https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/all"
       );
 
       setEmployees(res.data);
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/customers/all"
+        "https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/all"
       );
 
       setCustomers(res.data);
@@ -144,7 +144,7 @@ export default function AdminDashboard() {
 
       const res = await axios.post(
 
-        "http://localhost:5000/api/users/register",
+        "https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/register",
 
         {
           name: empName,
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
       try {
 
         await axios.put(
-          `http://localhost:5000/api/users/attendance/${id}`,
+          `https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/attendance/${id}`,
           {
             attendance: status
           }
@@ -211,7 +211,7 @@ export default function AdminDashboard() {
 
         const res = await axios.put(
 
-          `http://localhost:5000/api/users/update/${user._id}`,
+          `https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/update/${user._id}`,
 
           {
             name,

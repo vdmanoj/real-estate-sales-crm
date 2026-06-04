@@ -68,7 +68,7 @@ export default function ExecutiveDashboard() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/users/all"
+        "https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/all"
       );
 
       setEmployees(res.data);
@@ -86,7 +86,7 @@ export default function ExecutiveDashboard() {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/api/customers/all"
+        "https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/all"
       );
 
       setCustomers(res.data);
@@ -132,7 +132,7 @@ const addEmployee = async () => {
   try {
 
     const res = await axios.post(
-      "http://localhost:5000/api/users/register",
+      "https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/register",
       {
         name: empName,
         email: empEmail,
@@ -174,7 +174,7 @@ const addEmployee = async () => {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/customers/add",
+        "https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/add",
         {
           name: custName,
           email: custEmail,

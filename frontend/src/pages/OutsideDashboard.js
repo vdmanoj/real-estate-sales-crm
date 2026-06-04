@@ -28,9 +28,9 @@ export default function OutsideDashboard() {
       let url = "";
 
       if (page === "assigned") {
-        url = `http://localhost:5000/api/customers/outside/${user.name}/assigned`;
+        url = `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/outside/${user.name}/assigned`;
       } else {
-        url = `http://localhost:5000/api/customers/outside/${user.name}/assigned`;
+        url = `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/outside/${user.name}/assigned`;
       }
 
       const res = await axios.get(url);
@@ -56,7 +56,7 @@ export default function OutsideDashboard() {
   // MARK VISITED (FIXED)
   const markVisited = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/customers/${id}`, {
+      await axios.put(`https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/${id}`, {
         visited: true,
         status: "visited"
       });
@@ -218,7 +218,7 @@ export default function OutsideDashboard() {
                   }
 
                   await axios.put(
-                    `http://localhost:5000/api/customers/${c._id}`,
+                    `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/${c._id}`,
                     {
                       visited: true,
                       status: "completed"
@@ -230,7 +230,7 @@ export default function OutsideDashboard() {
                     formData.append("audio", audioBlob);
 
                     await axios.post(
-                      `http://localhost:5000/api/customers/audio/${c._id}`,
+                      `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/audio/${c._id}`,
                       formData
                     );
                   }
