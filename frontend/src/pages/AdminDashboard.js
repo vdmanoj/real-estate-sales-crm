@@ -204,41 +204,7 @@ const [role] =
     };
 
   // UPDATE PROFILE
-  const updateProfile =
-    async () => {
-
-      try {
-
-        const res = await axios.put(
-
-          `https://real-estate-sales-crm-vdmanoj.onrender.com/api/users/update/${user._id}`,
-
-          {
-            name,
-            email,
-            role
-          }
-        );
-
-        localStorage.setItem(
-          "user",
-          JSON.stringify(res.data.user)
-        );
-
-        alert(
-          "Profile Updated Successfully"
-        );
-
-      } catch (err) {
-
-        console.log(err);
-
-        alert(
-          "Profile Update Failed"
-        );
-      }
-    };
-
+  
   // LOGOUT
   const logout = () => {
 
