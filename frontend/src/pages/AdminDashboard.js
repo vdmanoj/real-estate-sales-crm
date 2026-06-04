@@ -51,14 +51,14 @@ export default function AdminDashboard() {
 
 
   // SETTINGS
-  const [name, setName] =
-    useState(user.name || "");
+  const [name] =
+  useState(user.name || "");
 
-  const [email, setEmail] =
-    useState(user.email || "");
+const [email] =
+  useState(user.email || "");
 
-  const [role, setRole] =
-    useState(user.role || "");
+const [role] =
+  useState(user.role || "");
 
   // DATA
   const [employees, setEmployees] =
