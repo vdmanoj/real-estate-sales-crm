@@ -15,24 +15,16 @@ export default function OutsideDashboard() {
 
   const [page, setPage] = useState("home");
   const [customers, setCustomers] = useState([]);
-  const [recording, setRecording] = useState(false);
 
-  
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [audioBlob, setAudioBlob] = useState(null);
-
 
   // LOAD CUSTOMERS
   const loadCustomers = async () => {
     try {
 
-      let url = "";
-
-      if (page === "assigned") {
-        url = `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/outside/${user.name}/assigned`;
-      } else {
-        url = `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/outside/${user.name}/assigned`;
-      }
+      const url =
+        `https://real-estate-sales-crm-vdmanoj.onrender.com/api/customers/outside/${user.name}/assigned`;
 
       const res = await axios.get(url);
       setCustomers(res.data);
@@ -43,19 +35,12 @@ export default function OutsideDashboard() {
     }
   };
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => {
-  loadCustomers();
-}, []);
-
- 
- 
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadCustomers();
   }, []);
 
-  // MARK VISITED (FIXED)
+  
   
 
   return (

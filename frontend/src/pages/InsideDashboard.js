@@ -78,18 +78,12 @@ const loadCustomers = useCallback(async (type = "all") => {
     console.log(err);
     setCustomers([]);
   }
-}, [user.name]);;
+}, [user.name]);
 
   // =========================
-  // FIRST LOAD
-// eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => {
+ useEffect(() => {
 
-  if (page === "home") {
-    loadCustomers("all");
-  }
-
-  if (page === "calls") {
+  if (page === "home" || page === "calls") {
     loadCustomers("all");
   }
 
@@ -101,7 +95,7 @@ useEffect(() => {
     loadCustomers("notInterested");
   }
 
-}, [page]);
+}, [page, loadCustomers]);
   // =========================
   // UPDATE STATUS
   // =========================
